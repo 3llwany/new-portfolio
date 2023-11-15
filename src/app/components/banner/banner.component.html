@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="user-profile-images">
+    <!-- user timeline image -->
+    <img
+      [src]="assetsManager.banner"
+      class="img-fluid rounded-top user-timeline-image "
+      alt="banner"
+      width="100%"
+    />
+    <!-- user profile image -->
+    <img
+      [src]="assetsManager.big_profile"
+      class="user-profile-image rounded"
+      alt="User Profile Image"
+      height="140"
+      width="140"
+    />
+  </div>
+  <div class="user-profile-text">
+    <h4 class="profile-text-color mb-0">Sayed Elwany</h4>
+    <small>Front-End Angular Developer </small>
+  </div>
+  <!-- user profile body start -->
+  <div class="card-content">
+    <div class="card-body">
+      <div class="user-profile-buttons d-flex justify-content-center justify-content-sm-start">
+        <a
+          *ngFor="let app of socialLinks"
+          class="btn btn-social-icon mr-2"
+          [ngClass]="app.btn"
+          [href]="app.url"
+          target="_blank"
+        >
+          <i [class]="app.icon"></i>
+        </a>
+      </div>
+    </div>
+    <!-- user profile body ends -->
+  </div>
+</div>

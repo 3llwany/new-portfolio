@@ -1,0 +1,36 @@
+.content-header{
+  color: #616d89;
+  display: inline-block;  
+  border-bottom: 4px solid #616d89;
+}
+.project-img {
+  width: 100%;
+  height: 200px !important;
+  transition: all .3s ease-in-out;
+}
+
+.project-img:hover {
+  filter: brightness(.8);
+}
+
+.project .card-body {
+  height: 115px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.vertical-card {
+  .card-text {
+     overflow: hidden !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .img{
+    height: 200px;
+    overflow: hidden;
+  }
+}

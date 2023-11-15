@@ -1,0 +1,51 @@
+<div class="content-header">
+  <i class="fa fa-suitcase font-large-1 mr-1 secondary"></i>
+  Projects
+</div>
+
+
+<div class="row" *ngIf="false">
+  <div class="col-4" *ngFor="let project of projects">
+    <div class="card project">
+      <div class="card-content">
+        <img class="img-fluid project-img" [src]="project.img" [alt]="project.name">
+        <div class="card-header">
+          <h4 class="card-title">{{project.name}}</h4>
+        </div>
+        <div class="card-body" [title]="project.description">
+          <p class="card-text">{{project.description}}</p>
+        </div>
+        <div class="card-footer pt-0 mt-1">
+          <a *ngIf="project.url" class="card-link danger" target="_blank" [href]="project.url">go</a>
+          <a class="card-link danger" target="_blank">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row" *ngIf="true">
+  <div class="col-6" *ngFor="let project of projects">
+    <div class="card overflow-hidden vertical-card">
+      <div class="row">
+        <div class="col-sm-6 col-12 d-flex align-items-center">
+          <div class="card-body">
+            <div class="align-self-center">
+              <div>
+                <h4 class="card-title mb-3">{{project.name}}</h4>
+                <p class="card-text">{{project.description}}</p>
+                <button type="button" class="btn btn-danger">Go somewhere</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-12">
+          <div class="card-img">
+            <img class="img-fluid img" [src]="project.img" [alt]="project.name">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
