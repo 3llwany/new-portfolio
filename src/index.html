@@ -52,7 +52,7 @@ License: You must have a valid license purchased only from themeforest(the above
       bottom: 0;
       right: 0;
       overflow: hidden;
-      background: rgba(51, 51, 51, 1);
+      background: #FFF;
       opacity: 0;
       transition: opacity 1s ease-in-out;
       z-index: -1;
@@ -68,17 +68,26 @@ License: You must have a valid license purchased only from themeforest(the above
       margin-top: -19px;
     }
 
-    app-root:empty ~ .page-loading {
+    /*app-root:empty ~ .page-loading {*/
+    /*  opacity: 1;*/
+    /*  z-index: 1;*/
+    /*}*/
+
+    .lottieSpan {
+      height: 100%;
+    }
+
+    .page-loading {
       opacity: 1;
-      z-index: 1;
+      z-index: 99999999999999;
     }
   </style>
 </head>
 
 <body class="layout-dark">
 <app-root></app-root>
-<div class="page-loading">
-  <img src="assets/img/oval.svg" class="loading-icon"/>
-</div>
+<!--<div class="page-loading">-->
+<!--  <img src="assets/img/oval.svg" class="loading-icon"/>-->
+<!--</div>-->
 </body>
 </html>

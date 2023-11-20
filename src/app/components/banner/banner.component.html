@@ -3,9 +3,10 @@
     <!-- user timeline image -->
     <img
       [src]="assetsManager.banner"
-      class="img-fluid rounded-top user-timeline-image "
+      class="img-fluid rounded-top user-timeline-image"
       alt="banner"
       width="100%"
+      [attr.style.height]="(!deviceService.isDesktop()) ? '520px' : 'auto'"
     />
     <!-- user profile image -->
     <img
@@ -16,7 +17,7 @@
       width="140"
     />
   </div>
-  <div class="user-profile-text">
+  <div class="user-profile-text" [class.username]="!deviceService.isDesktop()">
     <h4 class="profile-text-color mb-0">Sayed Elwany</h4>
     <small>Front-End Angular Developer </small>
   </div>
@@ -34,7 +35,7 @@
           <i [class]="app.icon"></i>
         </a>
 
-<!--        <app-counter></app-counter>-->
+        <!-- <app-counter></app-counter> -->
       </div>
     </div>
     <!-- user profile body ends -->

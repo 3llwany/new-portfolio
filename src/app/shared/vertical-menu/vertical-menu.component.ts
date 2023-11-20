@@ -2,16 +2,16 @@ import {
   Component, OnInit, ViewChild, OnDestroy,
   ElementRef, AfterViewInit, ChangeDetectorRef, HostListener
 } from "@angular/core";
-import { ROUTES } from './vertical-menu-routes.config';
-import { HROUTES } from '../horizontal-menu/navigation-routes.config';
+import {ROUTES} from './vertical-menu-routes.config';
+import {HROUTES} from '../horizontal-menu/navigation-routes.config';
 
-import { Router } from "@angular/router";
-import { TranslateService } from '@ngx-translate/core';
-import { customAnimations } from "../animations/custom-animations";
-import { DeviceDetectorService } from 'ngx-device-detector';
-import { ConfigService } from '../services/config.service';
-import { Subscription } from 'rxjs';
-import { LayoutService } from '../services/layout.service';
+import {Router} from "@angular/router";
+import {TranslateService} from '@ngx-translate/core';
+import {customAnimations} from "../animations/custom-animations";
+import {DeviceDetectorService} from 'ngx-device-detector';
+import {ConfigService} from '../services/config.service';
+import {Subscription} from 'rxjs';
+import {LayoutService} from '../services/layout.service';
 
 @Component({
   selector: "app-sidebar",
@@ -47,7 +47,7 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   ngOnInit() {
-    this.menuItems = ROUTES;
+    //  this.menuItems = ROUTES;
   }
 
   ngAfterViewInit() {
@@ -73,40 +73,35 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:resize', ['$event'])
   onWindowResize(event) {
-      if (this.resizeTimeout) {
-          clearTimeout(this.resizeTimeout);
-      }
-      this.resizeTimeout = setTimeout((() => {
-        this.innerWidth = event.target.innerWidth;
-          this.loadLayout();
-      }).bind(this), 500);
+    if (this.resizeTimeout) {
+      clearTimeout(this.resizeTimeout);
+    }
+    this.resizeTimeout = setTimeout((() => {
+      this.innerWidth = event.target.innerWidth;
+      this.loadLayout();
+    }).bind(this), 500);
   }
 
   loadLayout() {
 
     if (this.config.layout.menuPosition === "Top") { // Horizontal Menu
       if (this.innerWidth < 1200) { // Screen size < 1200
-        this.menuItems = HROUTES;
+        //this.menuItems = HROUTES;
       }
+    } else if (this.config.layout.menuPosition === "Side") { // Vertical Menu{
+      //  this.menuItems = ROUTES;
     }
-    else if (this.config.layout.menuPosition === "Side") { // Vertical Menu{
-      this.menuItems = ROUTES;
-    }
-
-
 
 
     if (this.config.layout.sidebar.backgroundColor === 'white') {
       this.logoUrl = 'assets/img/logo-dark.png';
-    }
-    else {
+    } else {
       this.logoUrl = 'assets/img/logo.png';
     }
 
-    if(this.config.layout.sidebar.collapsed) {
+    if (this.config.layout.sidebar.collapsed) {
       this.collapseSidebar = true;
-    }
-    else {
+    } else {
       this.collapseSidebar = false;
     }
   }
@@ -114,7 +109,7 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   toggleSidebar() {
     let conf = this.config;
     conf.layout.sidebar.collapsed = !this.config.layout.sidebar.collapsed;
-    this.configService.applyTemplateConfigChange({ layout: conf.layout });
+    this.configService.applyTemplateConfigChange({layout: conf.layout});
 
     setTimeout(() => {
       this.fireRefreshEventOnWindow();
@@ -138,8 +133,7 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (isMobile || isTablet) {
       this.perfectScrollbarEnable = false;
-    }
-    else {
+    } else {
       this.perfectScrollbarEnable = true;
     }
 

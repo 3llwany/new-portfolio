@@ -1,34 +1,45 @@
-import { Component, ViewContainerRef, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import {Component, ViewContainerRef, OnInit, OnDestroy} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {Router, NavigationEnd} from '@angular/router';
+import {filter} from 'rxjs/operators';
+import {AnimationOptions} from "ngx-lottie";
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html'
+  selector: 'app-root',
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-    subscription: Subscription;
+  subscription: Subscription;
+  loading: boolean = true;
 
-    constructor(private router: Router) {
+  constructor(private router: Router) {
+
+  }
+
+
+  ngOnInit() {
+    this.subscription = this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      )
+      .subscribe(() => window.scrollTo(0, 0));
+
+    setTimeout(() => {
+      this.loading = false;
+
+    }, 4000);
+  }
+
+  options: AnimationOptions = {
+    path: 'assets/images/welcome.json',
+  };
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
-
-    ngOnInit() {
-        this.subscription = this.router.events
-            .pipe(
-                filter(event => event instanceof NavigationEnd)
-            )
-            .subscribe(() => window.scrollTo(0, 0));
-    }
-
-
-    ngOnDestroy() {
-        if (this.subscription) {
-            this.subscription.unsubscribe();
-        }
-    }
-
+  }
 
 
 }
