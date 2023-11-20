@@ -26,17 +26,10 @@ import {ProjectsComponent} from './components/projects/projects.component';
 import {CounterComponent} from './components/counter/counter.component';
 import {StoreModule} from "@ngrx/store";
 import {reducers} from "app/store/store.reducers";
+import {AngularFireAuthModule} from "@angular/fire/auth";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "environments/environment";
 
-var firebaseConfig = {
-  apiKey: "YOUR_API_KEY", //YOUR_API_KEY
-  authDomain: "YOUR_AUTH_DOMAIN", //YOUR_AUTH_DOMAIN
-  databaseURL: "YOUR_DATABASE_URL", //YOUR_DATABASE_URL
-  projectId: "YOUR_PROJECT_ID", //YOUR_PROJECT_ID
-  storageBucket: "YOUR_STORAGE_BUCKET", //YOUR_STORAGE_BUCKET
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID", //YOUR_MESSAGING_SENDER_ID
-  appId: "YOUR_APP_ID", //YOUR_APP_ID
-  measurementId: "YOUR_MEASUREMENT_ID", //YOUR_MEASUREMENT_ID
-};
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -64,7 +57,9 @@ export function createTranslateLoader(http: HttpClient) {
       },
     }),
     PerfectScrollbarModule,
-    StoreModule.forRoot(reducers)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    StoreModule.forRoot(reducers),
   ],
   providers: [
     {provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG},

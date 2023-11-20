@@ -4,7 +4,7 @@
 </div>
 
 
-<div class="row" *ngIf="false">
+<div class="row" *ngIf="true">
   <div class="col-4" *ngFor="let project of projects">
     <div class="card project">
       <div class="card-content">
@@ -16,8 +16,8 @@
           <p class="card-text">{{project.description}}</p>
         </div>
         <div class="card-footer pt-0 mt-1">
-          <a *ngIf="project.url" class="card-link danger" target="_blank" [href]="project.url">go</a>
-          <a class="card-link danger" target="_blank">Details</a>
+          <a *ngIf="project.url" class="card-link info" target="_blank" [href]="project.url">Live Preview</a>
+          <a class="card-link warning" target="_blank">Details</a>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
 </div>
 
 
-<div class="row" *ngIf="true">
+<div class="row" *ngIf="false">
   <div class="col-6" *ngFor="let project of projects">
     <div class="card overflow-hidden vertical-card">
       <div class="row">
