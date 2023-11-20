@@ -28,11 +28,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var appRoutes = [{
-  path: "",
-  redirectTo: "profile",
-  pathMatch: "full"
-}, {
+var appRoutes = [// {
+// 	path: "",
+// 	redirectTo: "profile",
+// 	pathMatch: "full",
+// },
+{
   path: "",
   component: _layouts_full_full_layout_component__WEBPACK_IMPORTED_MODULE_2__.FullLayoutComponent,
   data: {
@@ -5216,7 +5217,7 @@ var Full_ROUTES = [// {
 //   loadChildren: () => import('../../page/page.module').then(m => m.PageModule)
 // }
 {
-  path: "profile",
+  path: "",
   component: app_components_profile_profile_component__WEBPACK_IMPORTED_MODULE_0__.ProfileComponent
 }];
 

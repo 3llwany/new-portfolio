@@ -8,11 +8,11 @@ import { Full_ROUTES } from "./shared/routes/full-layout.routes";
 import { CONTENT_ROUTES } from "./shared/routes/content-layout.routes";
 
 const appRoutes: Routes = [
-	{
-		path: "",
-		redirectTo: "profile",
-		pathMatch: "full",
-	},
+	// {
+	// 	path: "",
+	// 	redirectTo: "profile",
+	// 	pathMatch: "full",
+	// },
 	{
 		path: "",
 		component: FullLayoutComponent,
