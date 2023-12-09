@@ -4,6 +4,7 @@ import {decrement, increment, reset} from "app/store/counter/counter.actions";
 import {Store} from "@ngrx/store";
 import {AngularFireAuth} from "@angular/fire/auth";
 import {AngularFirestore} from "@angular/fire/firestore";
+import {selectCounter} from "app/store/counter/counter.selector";
 
 @Component({
   selector: 'app-counter',
@@ -13,11 +14,15 @@ import {AngularFirestore} from "@angular/fire/firestore";
 export class CounterComponent implements OnInit {
   count$: Observable<number>
 
-  constructor(private store: Store<{
-    count: number
-  }>, private fireAuth: AngularFireAuth, private firestore: AngularFirestore) {
-    this.count$ = store.select('count');
+  constructor(private store: Store<{ counter: number }>,
+              private fireAuth: AngularFireAuth,
+              private firestore: AngularFirestore
+  ) {
+    this.count$ = store.select(selectCounter);
   }
+
+  plus = 2
+  minus = 3
 
   ngOnInit(): void {
     this.fireAuth.signInWithEmailAndPassword('sayedelwany03@gmail.com', '123456').then(res => {
@@ -26,12 +31,12 @@ export class CounterComponent implements OnInit {
   }
 
   increment() {
-    this.store.dispatch(increment({value: 70}))
+    this.store.dispatch(increment({value: this.plus}))
   }
 
 
   decrement() {
-    this.store.dispatch(decrement({value: 5}))
+    this.store.dispatch(decrement({value: this.minus}))
   }
 
 

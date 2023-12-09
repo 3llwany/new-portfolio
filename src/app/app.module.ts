@@ -1,35 +1,33 @@
 import {NgModule} from "@angular/core";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {StoreModule} from "@ngrx/store";
+import {EffectsModule} from '@ngrx/effects';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {NgxSpinnerModule} from "ngx-spinner";
-
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
   PerfectScrollbarModule,
 } from "ngx-perfect-scrollbar";
-
 import {AppRoutingModule} from "./app-routing.module";
 import {SharedModule} from "./shared/shared.module";
 import {AppComponent} from "./app.component";
 import {ContentLayoutComponent} from "./layouts/content/content-layout.component";
 import {FullLayoutComponent} from "./layouts/full/full-layout.component";
-
 import {WINDOW_PROVIDERS} from "./shared/services/window.service";
 import {ProfileComponent} from './components/profile/profile.component';
 import {BannerComponent} from './components/banner/banner.component';
 import {ProjectsComponent} from './components/projects/projects.component';
 import {CounterComponent} from './components/counter/counter.component';
-import {StoreModule} from "@ngrx/store";
 import {reducers} from "app/store/store.reducers";
 import {AngularFireAuthModule} from "@angular/fire/auth";
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "environments/environment";
 import {LottieModule} from "ngx-lottie";
+import {CounterEffects} from "app/store/counter/counter.effect";
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -62,10 +60,11 @@ export function playerFactory() {
       },
     }),
     PerfectScrollbarModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([CounterEffects]),
+    LottieModule.forRoot({player: playerFactory}),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    StoreModule.forRoot(reducers),
-    LottieModule.forRoot({player: playerFactory}),
   ],
   providers: [
     {provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG},

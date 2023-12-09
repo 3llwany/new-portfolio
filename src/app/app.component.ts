@@ -3,6 +3,8 @@ import {Subscription} from 'rxjs';
 import {Router, NavigationEnd} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {AnimationOptions} from "ngx-lottie";
+import {Store} from "@ngrx/store";
+import {init} from "app/store/counter/counter.actions";
 
 @Component({
   selector: 'app-root',
@@ -13,8 +15,8 @@ export class AppComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   loading: boolean = true;
 
-  constructor(private router: Router) {
-
+  constructor(private router: Router, private store: Store) {
+    store.dispatch(init())
   }
 
 
