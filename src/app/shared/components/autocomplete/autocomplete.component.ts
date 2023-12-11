@@ -3,18 +3,21 @@ import {AutocompleteContentDirective} from './autocomplete-content.directive';
 import {OptionComponent} from './option/option.component';
 import {switchMap} from 'rxjs/operators';
 import {merge} from 'rxjs';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
-  selector: 'app-autocomplete',
-  template: `
+    selector: 'app-autocomplete',
+    template: `
     <ng-template #root>
       <div class="autocomplete search-list">
         <ng-container *ngTemplateOutlet="content ? content.tpl : null"></ng-container>
       </div>
     </ng-template>
   `,
-  exportAs: 'appAutocomplete',
-  styleUrls: ['./autocomplete.component.css']
+    exportAs: 'appAutocomplete',
+    styleUrls: ['./autocomplete.component.css'],
+    standalone: true,
+    imports: [NgTemplateOutlet]
 })
 export class AutocompleteComponent {
   @ViewChild('root') rootTemplate: TemplateRef<any>;

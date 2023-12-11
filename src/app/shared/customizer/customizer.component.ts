@@ -11,11 +11,15 @@ import {
 import { ConfigService } from "../services/config.service";
 import { Subscription } from "rxjs";
 import { CustomizerService } from '../services/customizer.service';
+import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
+import { NgClass, NgFor, NgIf } from "@angular/common";
 
 @Component({
-  selector: "app-customizer",
-  templateUrl: "./customizer.component.html",
-  styleUrls: ["./customizer.component.scss"]
+    selector: "app-customizer",
+    templateUrl: "./customizer.component.html",
+    styleUrls: ["./customizer.component.scss"],
+    standalone: true,
+    imports: [NgClass, PerfectScrollbarModule, NgFor, NgIf]
 })
 export class CustomizerComponent implements OnInit, OnDestroy {
   @ViewChild("customizer") customizer: ElementRef;

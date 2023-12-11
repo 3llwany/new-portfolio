@@ -6,7 +6,8 @@ import { TopMenuDirective } from "./topmenu.directive";
 
 
 @Directive({
-  selector: "[appTopMenulink]"
+    selector: "[appTopMenulink]",
+    standalone: true
 })
 export class TopMenuLinkDirective implements OnInit, OnDestroy {
 

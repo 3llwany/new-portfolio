@@ -3,12 +3,15 @@ import { ConfigService } from 'app/shared/services/config.service';
 import { DOCUMENT } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { CustomizerService } from 'app/shared/services/customizer.service';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-content-layout',
-  templateUrl: './content-layout.component.html',
-  styleUrls: ['./content-layout.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-content-layout',
+    templateUrl: './content-layout.component.html',
+    styleUrls: ['./content-layout.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [RouterOutlet]
 })
 
 export class ContentLayoutComponent implements OnInit, OnDestroy {

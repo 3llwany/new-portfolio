@@ -5,11 +5,14 @@ import {Store} from "@ngrx/store";
 // import {AngularFireAuth} from "@angular/fire/auth";
 // import {AngularFirestore} from "@angular/fire/firestore";
 import {selectCounter} from "app/store/counter/counter.selector";
+import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-counter',
-  templateUrl: './counter.component.html',
-  styleUrls: ['./counter.component.scss'],
+    selector: 'app-counter',
+    templateUrl: './counter.component.html',
+    styleUrls: ['./counter.component.scss'],
+    standalone: true,
+    imports: [AsyncPipe]
 })
 export class CounterComponent implements OnInit {
   count$: Observable<number>

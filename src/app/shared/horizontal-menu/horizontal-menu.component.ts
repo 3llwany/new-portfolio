@@ -3,13 +3,20 @@ import { HROUTES } from './navigation-routes.config';
 import { LayoutService } from '../services/layout.service';
 import { ConfigService } from '../services/config.service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, RouterLinkActive, RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { TopMenuAnchorToggleDirective } from '../directives/topmenu-anchor-toggle.directive';
+import { TopMenuLinkDirective } from '../directives/topmenu-link.directive';
+import { TopMenuDropdownDirective } from '../directives/topmenu-dropdown.directive';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 
 
 @Component({
-  selector: 'app-horizontal-menu',
-  templateUrl: './horizontal-menu.component.html',
-  styleUrls: ['./horizontal-menu.component.scss']
+    selector: 'app-horizontal-menu',
+    templateUrl: './horizontal-menu.component.html',
+    styleUrls: ['./horizontal-menu.component.scss'],
+    standalone: true,
+    imports: [NgClass, TopMenuDropdownDirective, NgFor, TopMenuLinkDirective, RouterLinkActive, NgIf, TopMenuAnchorToggleDirective, RouterLink, TranslateModule]
 })
 export class HorizontalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 

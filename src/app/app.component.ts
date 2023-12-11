@@ -1,22 +1,30 @@
-import {Component, ViewContainerRef, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {Router, NavigationEnd} from '@angular/router';
+import {NavigationEnd, Router, RouterModule, RouterOutlet} from '@angular/router';
 import {filter} from 'rxjs/operators';
-import {AnimationOptions} from "ngx-lottie";
+import {AnimationOptions, LottieModule} from "ngx-lottie";
 import {Store} from "@ngrx/store";
 import {init} from "app/store/counter/counter.actions";
+import {NgIf} from "@angular/common";
 
 @Component({
+  standalone: true,
   selector: 'app-root',
+  imports: [
+    LottieModule,
+    NgIf,
+    RouterModule
+  ],
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
-  loading: boolean = true;
+  loading: boolean = false;
 
-  constructor(private router: Router, private store: Store) {
-    store.dispatch(init())
+  constructor(private router: Router, // store: Store
+  ) {
+    // store.dispatch(init())
   }
 
 
