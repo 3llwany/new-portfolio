@@ -23,8 +23,8 @@ import {BannerComponent} from './components/banner/banner.component';
 import {ProjectsComponent} from './components/projects/projects.component';
 import {CounterComponent} from './components/counter/counter.component';
 import {reducers} from "app/store/store.reducers";
-import {AngularFireAuthModule} from "@angular/fire/auth";
-import {AngularFireModule} from "@angular/fire";
+// import {AngularFireAuthModule} from "@angular/fire/auth";
+// import {AngularFireModule} from "@angular/fire";
 import {environment} from "environments/environment";
 import {LottieModule} from "ngx-lottie";
 import {CounterEffects} from "app/store/counter/counter.effect";
@@ -63,8 +63,8 @@ export function playerFactory() {
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([CounterEffects]),
     LottieModule.forRoot({player: playerFactory}),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    // AngularFireAuthModule,
   ],
   providers: [
     {provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG},

@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class MatngularPage {
+export class portfolioPage {
   navigateTo() {
     return browser.get('/');
   }

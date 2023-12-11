@@ -1,10 +1,10 @@
-import { MatngularPage } from './app.po';
+import { portfolioPage } from './app.po';
 
-describe('Matngular App', () => {
-  let page: MatngularPage;
+describe('portfolio App', () => {
+  let page: portfolioPage;
 
   beforeEach(() => {
-    page = new MatngularPage();
+    page = new portfolioPage();
   });
 
   it('should expect true to be true', () => {
