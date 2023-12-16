@@ -15,16 +15,18 @@ const appRoutes: Routes = [
   // },
   {
     path: "",
-    component: FullLayoutComponent,
+    //component: FullLayoutComponent,
+    loadComponent: () => import('../app/layouts/full/full-layout.component').then(c => c.FullLayoutComponent),
     data: {title: "full Views"},
     children: Full_ROUTES,
   },
-  {
-    path: "",
-    component: ContentLayoutComponent,
-    data: {title: "content Views"},
-    children: CONTENT_ROUTES,
-  },
+  // {
+  //   path: "",
+  //   component: ContentLayoutComponent,
+  //   loadComponent: () => import('../app/layouts/content/content-layout.component').then(c => c.ContentLayoutComponent),
+  //   data: {title: "content Views"},
+  //   children: CONTENT_ROUTES,
+  // },
   {
     path: "**",
     redirectTo: "pages/error",

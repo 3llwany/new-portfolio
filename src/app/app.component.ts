@@ -1,30 +1,38 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
-import {NavigationEnd, Router, RouterModule, RouterOutlet} from '@angular/router';
-import {filter} from 'rxjs/operators';
-import {AnimationOptions, LottieModule} from "ngx-lottie";
-import {Store} from "@ngrx/store";
-import {init} from "app/store/counter/counter.actions";
 import {NgIf} from "@angular/common";
+import {NavigationEnd, Router, RouterModule} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {filter} from 'rxjs/operators';
+import {Store, StoreModule} from "@ngrx/store";
+import {EffectsModule} from "@ngrx/effects";
+import {AnimationOptions, LottieModule} from "ngx-lottie";
+import {init} from "app/store/counter/counter.actions";
+import {CounterEffects} from "app/store/counter/counter.effect";
+
 
 @Component({
   standalone: true,
   selector: 'app-root',
   imports: [
-    LottieModule,
     NgIf,
-    RouterModule
+    RouterModule,
+    EffectsModule,
+    StoreModule,
+    LottieModule,
   ],
+  providers: [CounterEffects],
   templateUrl: './app.component.html'
 })
+
+
 export class AppComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
-  loading: boolean = false;
+  loading: boolean = true;
 
-  constructor(private router: Router, // store: Store
+  constructor(private router: Router, store: Store
   ) {
-    // store.dispatch(init())
+    store.dispatch(init())
   }
 
 
