@@ -13,9 +13,9 @@ export const PROJECTS: IProjects[] = [
   {
     id: 1,
     name: "HR System",
-    url: null,
+    url: "https://mashura-hrms.netlify.app",
     img: assetsManager.hr,
-    description: "Create full structure pattern for HR project, create reusable and dynamic  functions, like store employee information and support various humanresource functions, such as benefits, payroll, recruiting, training, financial,attendance, self Service, org structure, employees structure, etc."
+    description: "Create full structure pattern for HR project, create reusable and dynamic  functions, like store employee information and support various human resource functions, such as benefits, payroll, recruiting, training, financial,attendance, self Service, org structure, employees structure, etc."
   },
 
   {

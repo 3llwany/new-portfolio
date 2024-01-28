@@ -28,7 +28,7 @@ import {CounterEffects} from "app/store/counter/counter.effect";
 export class AppComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
-  loading: boolean = true;
+  loading: boolean = false;
 
   constructor(private router: Router, store: Store
   ) {
@@ -43,10 +43,10 @@ export class AppComponent implements OnInit, OnDestroy {
       )
       .subscribe(() => window.scrollTo(0, 0));
 
-    setTimeout(() => {
-      this.loading = false;
-
-    }, 4000);
+    // setTimeout(() => {
+    //   this.loading = false;
+    //
+    // }, 4000);
   }
 
   options: AnimationOptions = {
